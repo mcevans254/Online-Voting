@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <nav>
+        <div class="heading">
+            <h4> UNIVERSITY E-VOTING SYSTEM </h4></div>
+
+        <ul class="nav-links">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+
+    </nav>
+    <meta charset="utf-8"/>
+    <title>Voter Registration</title>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="body.css"/>
+</head>
+<body>
+
+<form id="voterform" action="voter.php" method="POST">
+    <table cellpadding="10" border="110">
+        <th colspan="2"> are you registering as a Voters? please enter your admission</th>
+        <tr>
+            <td>Admission Number: <input type="text" id="admn" placeholder="Admission Number" required/></td>
+
+        </tr>
+        <tr>
+            <td><input id="submit" type="SUBMIT" value="submit"/></td>
+        </tr>
+    </table>
+</form>
+<script>
+    let submit;
+    submit.addEventListener("submit", function () {
+        const admn = admn.value;
+
+        // Send an AJAX request to check voter status
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "voter.php"); // Replace with your server-side script
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        resultMessage.textContent = "You are already registered as a student. You cannot register as a Voter.";
+                    } else if (response.status === "error") {
+                        resultMessage.textContent = "You are not registered as a student. You can proceed with registration.";
+                    }
+                } else {
+                    resultMessage.textContent = "An error occurred on the server.";
+                }
+            }
+        };
+
+        // Send the voter ID to the server for validation
+        const data = "admn=" + encodeURIComponent(voterID);
+        xhr.send(data);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>STUDENT VOTING PAGE</title>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="body.css"/>
+</head>
+
+<body>
+<nav>
+    <div class="heading">
+        <h4>UNIVERSITY E-VOTING SYSTEM</h4>
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="result.php">Result</a></li>
+    </ul>
+</nav>
+<form action="insertvote.php" method="POST">
+        <fieldset>
+        <legend>Vote for your preferred Candidate below</legend>
+        <table>
+            <tr>
+                <td>VoterID: <input type="text" name="voterid" id="voterid" placeholder="Voter ID" required/></td>
+            </tr>
+            <tr>
+                <td>President: <input type="text" name="President" id="President" placeholder="President" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Vice president: <input type="text" name="Vice_president" id="Vice_president"
+                                           placeholder="Vice President" required/></td>
+            </tr>
+            <tr>
+                <td>Secretary General: <input type="text" name="Secretary_General" id="Secretary_General"
+                                              placeholder="Secretary General" required/></td>
+            </tr>
+            <tr>
+                <td>Minister of Academics: <input type="text" name="Academics" id="Academics"
+                                                  placeholder="Minister Of Academics" required/></td>
+            </tr>
+            <tr>
+                <td>Minister Of Finance: <input type="text" name="Finance" id="Finance"
+                                                placeholder="Minister Of Finance" required/></td>
+            </tr>
+            <tr>
+                <td>Minister Of Sports: <input type="text" name="Sports" id="Sports"
+                                               placeholder="Minister Of Sports"
+                                               onfocus="retrieveContestants('Sports')" required/></td>
+            </tr>
+            <tr>
+                <td>Minister Of Entertainment: <input type="text" name="Entertainment" id="Entertainment"
+                                                      placeholder="Minister Of Entertainment" required/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+    </fieldset>
+
+</form>
+</body>
+</html>

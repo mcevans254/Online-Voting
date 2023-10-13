@@ -1,0 +1,103 @@
+* {
+
+    margin: 5px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+}
+
+.body-text {
+
+    display: flex;
+
+    font-family: "Montserrat", sans-serif;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 250px;
+
+}
+
+nav {
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: center;
+
+    min-height: 8vh;
+
+    background-color: teal;
+
+    font-family: "Montserrat", sans-serif;
+
+}
+
+.heading {
+
+    color: white;
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    font-size: 20px;
+
+}
+
+.nav-links {
+
+    display: flex;
+
+    justify-content: space-around;
+
+    width: 30%;
+
+}
+
+.nav-links li {
+
+    list-style: none;
+
+}
+
+.nav-links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    padding: 14px 16px;
+
+}
+
+.nav-links a:hover:not(.active) {
+
+    background-color: lightseagreen;
+
+}
+
+.nav-links li a.active {
+
+    background-color: #4caf50;
+
+}
+
+.error-container {
+    background-color: #ffcccc; /* Light red background color */
+    color: #ff0000; /* Red text color */
+    border: 1px solid #ff0000; /* Red border */
+    padding: 10px; /* Spacing inside the container */
+    margin-bottom: 10px; /* Spacing below the container */
+}

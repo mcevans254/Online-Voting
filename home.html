@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to University E-Voting System</title>
+    <link rel="stylesheet" href="main.css"> <!-- Include your CSS file here -->
+    <link rel="stylesheet" href="body.css">
+    <style>
+        /* Add your custom CSS styles for the welcome page here */
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<form action="index.php">
+    <nav>
+        <div class="heading">
+            <h4>UNIVERSITY E-VOTING SYSTEM</h4>
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a>
+            <li><a href="result.php">RESULTS</a></li>
+        </ul>
+    </nav>
+    <br/><br>
+    <div class="container">
+        <h1>Welcome to University E-Voting System</h1>
+        <? phpvar_dump($_SESSION); ?>
+        <p>Hello, <strong><?php session_start();
+                echo $_SESSION["username"]; ?></strong>!</p>
+        <p>You are now logged in and can proceed to vote for your preferred candidates.</p>
+        | <a href="votin.html">Go to Voting Page</a> | <a href="logout.php">Logout</a> |
+    </div>
+</form>
+</body>
+</html>

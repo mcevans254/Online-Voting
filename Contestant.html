@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Contestant Registration</title>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="body.css"/>
+</head>
+<body>
+<nav>
+    <div class="heading">
+        <h4> UNIVERSITY E-VOTING SYSTEM </h4>
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+<form action="contestantverify.php" method="post" name="contestantForm">
+    <table>
+        <th>Contestant</th>
+        <tr>
+            <td>VOTER ID: <input type="text" id="voterID" name="VoterID" required/></td>
+        </tr>
+        <tr><td>POST ID: <input type="text" id="postID" name="postID" required/></td></tr>
+        <tr>
+            <td><input type="submit" id="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form>
+<div id="result"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const voterIDInput = document.getElementById("voterID");
+        const postid = document.getElementById("postID");
+        voterIDInput.addEventListener("input", function () {
+            // Clear any previous result message
+            result.textContent = "";
+
+            // Disable the "Submit" button if the VoterID field is empty
+            if (voterIDInput.value.trim() === "") {
+                submit.disabled = true;
+                console.warn("Please fill in Voter ID.");
+            } else {
+                submit.disabled = false;
+            }
+        });
+
+        // Handle form submission separately
+        document.querySelector("form[name='contestantForm']").addEventListener("submit", function (event) {
+            // Prevent form submission if VoterID is empty
+            if (voterIDInput.value.trim() === "") {
+                event.preventDefault();
+                result.textContent = "Please fill in Voter ID.";
+                return;
+            }
+
+            const voterID = voterIDInput.value;
+
+            // Send an AJAX request to check voter status
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "contestantverify.php"); // Replace with your server-side script
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.status === "success") {
+                            result.textContent = "You are already registered as a voter. You cannot register as a contestant.";
+                        } else if (response.status === "error") {
+                            result.textContent = "You are not registered as a voter. You can proceed with contestant registration.";
+                        }
+                    } else {
+                        result.textContent = "An error occurred on the server.";
+                    }
+                }
+            };
+
+            // Send the voter ID to the server for validation
+            const data = "voterID=" + encodeURIComponent(voterID);
+            xhr.send(data);
+        });
+    });
+
+</script>
+</body>
+</html>

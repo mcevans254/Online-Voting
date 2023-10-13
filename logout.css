@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+     /* Define the keyframes for the fadeInUp animation */
+@keyframes fadeInUp {
+    0%, 100% {
+        opacity: 0; /* Start and end with full transparency (invisible) */
+        transform: translateX(20px); /* Start and end position, slightly below */
+    }
+    50% {
+        opacity: 1; /* Middle of the animation, full visibility (visible) */
+        transform: translateY(0); /* Middle position, at its original position */
+    }
+}
+
+/* Apply the fadeInUp animation to individual dots */
+.dot-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Set the container's height to viewport height for vertical centering */
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 0 5px; /* Add some horizontal spacing between dots */
+    animation: fadeInUp 2s infinite; /* Change the duration to control the speed */
+    animation-delay: 0s; /* Adjust the delay for each dot */
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.5s; /* Delay the animation of the second dot by 0.5 seconds */
+}
+
+.dot:nth-child(3) {
+    animation-delay: 1s; /* Delay the animation of the third dot by 1 second */
+}
+
+/* Add more dots and adjust animation delays as needed */
+
+/* Style for the loading message */
+.loading-message {
+    font-size: 18px;
+    margin-top: 20px; /* Add some space between dots and the message */
+}
+</style>
+</head>
+<body>
+<div class="dot-container">
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="loading-message">Loading, please wait...</div>
+</div>
+</body>
+</html>
+
+<script>
+// Simulate a delay before opening another page
+setTimeout(function () {
+window.location.href = "index.html"; // Replace with the URL of the next page
+}, 3600); // Change the delay time as needed (in milliseconds)
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> STUDENT REGISTRATION PAGE </title>
+    <nav>
+        <div class="heading">
+            <h4> UNIVERSITY E-VOTING SYSTEM </h4>
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="body.css"/>
+</head>
+<body>
+<form id="studentform" action="studentt.php" method="post" onsubmit="validateForm()">
+    <fieldset>
+        <legend>STUDENT INFORMATION</legend>
+        <div style="text-align: center;">
+            <table cellpadding="100" cellspacing="30" border="10" width=80% height=200%>
+                <tr>
+                    <td> Admission Number:
+                        <input type="text" name="admn" id="admn" placeholder="Admission Number"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> First Name: <input type="text" name="Fname" id="Fname" placeholder="First Name" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Second Name:
+                        <input type="text" name="Sname" id="Sname" placeholder="Second Name" required/></td>
+                </tr>
+                <br/>
+                <tr>
+                    <td> Course:
+                        <input type="text" name="Course" id="Course" placeholder="Course" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date of Admission: <input type="date" id="dob" placeholder="Date" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="Submit" id="Submit" value="Submit">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+    // Add validation to the form
+    function validateForm() {
+        var admn = document.getElementById("admn").value;
+        var fname = document.getElementById("Fname").value;
+        var sname = document.getElementById("Sname").value;
+        var course = document.getElementById("Course").value;
+        var dob = document.getElementById("dob").value;
+
+        // Check if the admission number is empty
+        if (admn === "") {
+            alert("Admission number must be filled out.");
+            return false;
+        }
+        return true;
+        // Check if the first name is empty
+        if (fname === "") {
+            alert("First name must be filled out.");
+            return false;
+        }
+        return true;
+        // Check if the second name is empty
+        if (sname == "") {
+            alert("Second name must be filled out.");
+            return false;
+        }
+        return true;
+        // Check if the course is empty
+        if (course == "") {
+            alert("Course must be filled out.");
+            return false;
+        }
+        return true;
+    }
+
+    // Add the `onsubmit` event listener to the form
+    document.getElementById("studentform").onsubmit = validateForm;
+</script>
+</body>
+</html>
